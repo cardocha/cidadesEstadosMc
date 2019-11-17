@@ -4,113 +4,109 @@ import cardocha.github.io.cidadesEstadosMc.model.Cidade;
 
 public class DesafioDto {
 
-    private OutputDto idEstado;
-    private OutputDto siglaEstado;
-    private OutputDto regiaoNome;
-    private OutputDto nomeCidade;
-    private OutputDto nomeMesorregiao;
-    private OutputDto nomeFormatado;
+    private String idEstado;
 
-    public DesafioDto(OutputDto idEstado, OutputDto siglaEstado, OutputDto regiaoNome, OutputDto nomeCidade, OutputDto nomeMesorregiao, OutputDto nomeFormatado) {
+    private String siglaEstado;
+
+    private String regiaoNome;
+
+    private String nomeCidade;
+
+    private String nomeMesorregiao;
+
+    private String nomeFormatado;
+
+    public DesafioDto(String idEstado, String siglaEstado, String regiaoNome, String nomeCidade, String nomeMesorregiao, String nomeFormatado) {
         this.idEstado = idEstado;
         this.siglaEstado = siglaEstado;
         this.regiaoNome = regiaoNome;
         this.nomeCidade = nomeCidade;
         this.nomeMesorregiao = nomeMesorregiao;
         this.nomeFormatado = nomeFormatado;
+    }
+
+    public DesafioDto(Cidade cidade) {
+        this.idEstado = String.valueOf(cidade
+                .getMicroRegiao()
+                .getMesoRegiao()
+                .getEstado().getId());
+
+        this.siglaEstado = cidade
+                .getMicroRegiao()
+                .getMesoRegiao()
+                .getEstado()
+                .getSigla();
+
+        this.regiaoNome = cidade
+                .getMicroRegiao()
+                .getMesoRegiao()
+                .getEstado()
+                .getRegiao()
+                .getNome();
+
+        nomeCidade = cidade.getNome();
+
+        this.nomeMesorregiao = cidade
+                .getMicroRegiao()
+                .getMesoRegiao()
+                .getNome();
+
+        this.nomeFormatado = cidade.getNome() + " / " + cidade
+                .getMicroRegiao()
+                .getMesoRegiao()
+                .getEstado()
+                .getSigla();
     }
 
     public DesafioDto() {
     }
 
-    public OutputDto getIdEstado() {
+    public String getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(OutputDto idEstado) {
+    public void setIdEstado(String idEstado) {
         this.idEstado = idEstado;
     }
 
-    public OutputDto getSiglaEstado() {
+    public String getSiglaEstado() {
         return siglaEstado;
     }
 
-    public void setSiglaEstado(OutputDto siglaEstado) {
+    public void setSiglaEstado(String siglaEstado) {
         this.siglaEstado = siglaEstado;
     }
 
-    public OutputDto getRegiaoNome() {
+    public String getRegiaoNome() {
         return regiaoNome;
     }
 
-    public void setRegiaoNome(OutputDto regiaoNome) {
+    public void setRegiaoNome(String regiaoNome) {
         this.regiaoNome = regiaoNome;
     }
 
-    public OutputDto getNomeCidade() {
+    public String getNomeCidade() {
         return nomeCidade;
     }
 
-    public void setNomeCidade(OutputDto nomeCidade) {
+    public void setNomeCidade(String nomeCidade) {
         this.nomeCidade = nomeCidade;
     }
 
-    public OutputDto getNomeMesorregiao() {
+    public String getNomeMesorregiao() {
         return nomeMesorregiao;
     }
 
-    public void setNomeMesorregiao(OutputDto nomeMesorregiao) {
+    public void setNomeMesorregiao(String nomeMesorregiao) {
         this.nomeMesorregiao = nomeMesorregiao;
     }
 
-    public OutputDto getNomeFormatado() {
+    public String getNomeFormatado() {
         return nomeFormatado;
     }
 
-    public void setNomeFormatado(OutputDto nomeFormatado) {
+    public void setNomeFormatado(String nomeFormatado) {
         this.nomeFormatado = nomeFormatado;
     }
 
-    public static DesafioDto from(Cidade cidade) {
-        DesafioDto desafioDto = new DesafioDto();
-
-        OutputDto idEstado = OutputDto.from(cidade
-                .getMicroRegiao()
-                .getMesoRegiao()
-                .getEstado().getId(), "idEstado");
-        desafioDto.setIdEstado(idEstado);
-
-        OutputDto siglaEstado = OutputDto.from(cidade
-                .getMicroRegiao()
-                .getMesoRegiao()
-                .getEstado()
-                .getSigla(), "siglaEstado");
-        desafioDto.setSiglaEstado(siglaEstado);
-
-        OutputDto regiaoNome = OutputDto.from(cidade
-                .getMicroRegiao()
-                .getMesoRegiao()
-                .getEstado()
-                .getRegiao()
-                .getNome(), "regiaoNome");
-        desafioDto.setRegiaoNome(regiaoNome);
-
-        OutputDto nomeCidade = OutputDto.from(cidade.getNome(), "nomeCidade");
-        desafioDto.setNomeCidade(nomeCidade);
-
-        OutputDto nomeMesoRegiao = OutputDto.from(cidade
-                .getMicroRegiao()
-                .getMesoRegiao()
-                .getNome(), "nomeMesorregiao");
-        desafioDto.setNomeMesorregiao(nomeMesoRegiao);
-
-        OutputDto nomeFormatado = OutputDto.from(cidade.getNome() + " / " + cidade
-                .getMicroRegiao()
-                .getMesoRegiao()
-                .getEstado()
-                .getSigla(), "nomeFormatado");
-        desafioDto.setNomeFormatado(nomeFormatado);
-
-        return desafioDto;
-    }
 }

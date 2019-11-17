@@ -1,6 +1,5 @@
 package cardocha.github.io.cidadesEstadosMc.api;
 
-import cardocha.github.io.cidadesEstadosMc.dto.DesafioDto;
 import cardocha.github.io.cidadesEstadosMc.model.Cidade;
 import cardocha.github.io.cidadesEstadosMc.model.Estado;
 import cardocha.github.io.cidadesEstadosMc.utils.RequestUtils;
@@ -27,25 +26,15 @@ public class ApiRequestServiceImpl implements ApiRequestService {
         return requestUtils.get(url, Cidade.class);
     }
 
-    public List gerarArquivo() {
+    public List getInformacoesIBGE() {
         List<Estado> estados = getEstados();
         List<Cidade> cidades = new ArrayList<>();
-        List<DesafioDto> itensDesafio = new ArrayList<>();
 
         for (Estado estado : estados) {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             cidades.addAll(getCidades(estado.getId()));
         }
 
-        for (Cidade cidade : cidades) {
-            itensDesafio.add(DesafioDto.from(cidade));
-        }
-
-        return itensDesafio;
+        return cidades;
     }
 
 }

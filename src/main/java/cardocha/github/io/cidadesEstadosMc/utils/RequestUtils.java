@@ -9,8 +9,12 @@ import java.io.*;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
+import static cardocha.github.io.cidadesEstadosMc.utils.TempoUtils.aguardar;
+
 @Component
 public class RequestUtils {
+
+    private static int NUMERO_MAXIMO_TENTATIVAS = 15;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -21,10 +25,16 @@ public class RequestUtils {
         int tentativa = 1;
         List resultado = performRequest(endPoint, objectClass, tentativa);
 
-        while (resultado == null)
+        while (deveTentarNovamente(resultado, tentativa)) {
+            aguardar(2);
             resultado = performRequest(endPoint, objectClass, ++tentativa);
+        }
 
         return resultado;
+    }
+
+    private boolean deveTentarNovamente(List resultado, int tentativa) {
+        return resultado == null && tentativa < NUMERO_MAXIMO_TENTATIVAS;
     }
 
     private List performRequest(String endPoint, Class objectClass, int tentativa) {

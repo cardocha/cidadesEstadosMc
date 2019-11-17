@@ -7,5 +7,5 @@ public interface ApiRequestService {
 
     List getCidades(long estadoId);
 
-    List gerarArquivo();
+    List getInformacoesIBGE();
 }
