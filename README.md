@@ -8,13 +8,13 @@ Este repositório contém uma possível solução para o desafio técnico abaixo
 *a. Deve ser usado a API para consultar os estados do Brasil:*
 *https://servicodados.ibge.gov.br/api/v1/localidades/estados*
 
-**b. Deve ser usado a API para consultar as cidades:***
+*b. Deve ser usado a API para consultar as cidades:***
 *https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios*
 
-**c. A documentação completa das APIs está no site:***
+*c. A documentação completa das APIs está no site:***
 *https://servicodados.ibge.gov.br/api/docs/localidades*
 
-**d. Os campos do CSV/JSON deverá ser:***
+*d. Os campos do CSV/JSON deverá ser:***
 
 * *i.idEstado*
 * *ii.siglaEstado*
