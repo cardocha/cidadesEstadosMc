@@ -62,6 +62,7 @@ public class ControllerPrincipal {
                 .findFirst()
                 .orElse(null);
 
+        ultimasCidadesPesquisadas.add(cidade);
         return cidade.getId();
     }
 

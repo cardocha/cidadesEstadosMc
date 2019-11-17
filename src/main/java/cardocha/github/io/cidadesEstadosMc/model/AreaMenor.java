@@ -34,7 +34,6 @@ public class AreaMenor extends EntidadeAbstrata {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         AreaMenor areaMenor = (AreaMenor) o;
         return nome.equals(areaMenor.nome);
     }
