@@ -2,6 +2,7 @@ package cardocha.github.io.cidadesEstadosMc.controller;
 
 import cardocha.github.io.cidadesEstadosMc.api.ApiRequestService;
 import cardocha.github.io.cidadesEstadosMc.dto.DesafioDto;
+import cardocha.github.io.cidadesEstadosMc.model.AreaMenor;
 import cardocha.github.io.cidadesEstadosMc.model.Cidade;
 import cardocha.github.io.cidadesEstadosMc.utils.FileOutputUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -24,6 +26,8 @@ public class ControllerPrincipal {
     private List<DesafioDto> listaInformacoesIbge;
 
     private List<Cidade> listaCidades;
+
+    private HashSet<Cidade> ultimasCidadesPesquisadas = new HashSet<>(50);
 
     @RequestMapping(value = "/json", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,6 +46,17 @@ public class ControllerPrincipal {
     @RequestMapping(value = "/cidades/{nomeCidade}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.CREATED)
     public long getCidade(@PathVariable("nomeCidade") String nomeCidade) {
+        AreaMenor cidadeParam = new AreaMenor(0, nomeCidade);
+
+        if (ultimasCidadesPesquisadas.contains(cidadeParam)) {
+            Cidade cidadeCache = ultimasCidadesPesquisadas.stream()
+                    .filter(c -> nomeCidade.equals(c.getNome()))
+                    .findFirst()
+                    .orElse(null);
+
+            return cidadeCache.getId();
+        }
+
         Cidade cidade = listaCidades.stream()
                 .filter(c -> nomeCidade.equals(c.getNome()))
                 .findFirst()

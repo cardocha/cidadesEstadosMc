@@ -22,4 +22,5 @@ public class Cidade extends AreaMenor {
     public void setMicroRegiao(MicroRegiao microRegiao) {
         this.microRegiao = microRegiao;
     }
+
 }
