@@ -1,6 +1,6 @@
 package cardocha.github.io.cidadesEstadosMc.model;
 
-public class AreaMenor {
+public class AreaMenor extends EntidadeAbstrata {
 
     private long id;
     private String nome;

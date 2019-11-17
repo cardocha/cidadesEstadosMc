@@ -4,7 +4,9 @@ import cardocha.github.io.cidadesEstadosMc.dto.DesafioDto;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import static cardocha.github.io.cidadesEstadosMc.utils.FileOutputType.CSV;
@@ -16,10 +18,11 @@ public class FileOutputUtils {
         logger.log("Convertendo conteúdo para CSV");
         try {
             OutputStream outputStream = response.getOutputStream();
+            OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.ISO_8859_1);
             String outputResult = toCsv(lista, true);
-            outputStream.write(outputResult.getBytes());
-            outputStream.flush();
-            outputStream.close();
+            writer.write(outputResult);
+            writer.flush();
+            writer.close();
             logger.log("Finalizado");
             return outputStream;
         } catch (Exception e) {
