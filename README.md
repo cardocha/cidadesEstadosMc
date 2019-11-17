@@ -42,8 +42,6 @@ a. NO CSV, a primeira linha (cabeçalho) deve conter o nome de cada campo e
 *f. No endpoint do CSV deverá retornar um objeto do tipo  java.io.OutputStream*
 *como saída da transformação.*
 
-
-
 1. Deverá usar somente o Spring boot e suas bibliotecas;
 2. Os procedimentos da biblioteca devem ser logados utilizando o
    mecanismo de Log do Java;
@@ -55,6 +53,9 @@ a. NO CSV, a primeira linha (cabeçalho) deve conter o nome de cada campo e
 6. Uso adequado de padrões de projetos;
    Flexibilidade do código para futuras evoluções;
    Clean code;
+
+
+# SOLUÇÃO -------------------------------------------------------------------------------------
 
 Diagrama de classes para a solução .
 
@@ -73,24 +74,22 @@ Diagrama de classes para a solução .
 2 - Como forma de evitar novas chamadas a api de localidades os dados são reunidos apenas no início da aplicação utilizando a notação @EventListener(ApplicationReadyEvent.class) na controller principal e expostos posteriormente através das urls 'json', 'csv' e cidades/{nomeCidade}
 
 
-
-
-## Getting Started
+## Como Executar
 
 O código fonte é um projeto Maven.  
 
-### Prerequisites
+### Prérequisitos
 
 JAVA 8+ / Maven 3.6.1+ / Spring boot  
 
-### Dependencies
+### Dependências
 
 Spring boot starter: https://search.maven.org/search?q=a:spring-boot-starter
 
-## Authors
+## Autor
 
 Luciano Cardoso https://github.com/cardocha
 
-## License
+## Licença
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
