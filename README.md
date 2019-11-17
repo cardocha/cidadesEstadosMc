@@ -55,8 +55,6 @@ a. NO CSV, a primeira linha (cabeçalho) deve conter o nome de cada campo e
    Clean code;
 
 
-# SOLUÇÃO -------------------------------------------------------------------------------------
-
 Diagrama de classes para a solução .
 
 ![alt text](https://raw.githubusercontent.com/cardocha/cidadesEstadosMc/master/src/main/resources/static/api.jpg)
