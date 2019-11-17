@@ -3,16 +3,16 @@
 Este repositório contém uma possível solução para o desafio técnico abaixo: 
 
 O desafio consiste em criar um microservice que consulte 2 APIs externas, gerar um
-CSV e um JSON e fazer o download.*
+CSV e um JSON e fazer o download.
 
  a. Deve ser usado a API para consultar os estados do Brasil:
-https://servicodados.ibge.gov.br/api/v1/localidades/estados*
+https://servicodados.ibge.gov.br/api/v1/localidades/estados
 
-b. Deve ser usado a API para consultar as cidades:***
+b. Deve ser usado a API para consultar as cidades:
 *https://servicodados.ibge.gov.br/api/v1/localidades/estados/{UF}/municipios
 
 c. A documentação completa das APIs está no site:
-https://servicodados.ibge.gov.br/api/docs/localidades*
+https://servicodados.ibge.gov.br/api/docs/localidades
 
 d. Os campos do CSV/JSON deverá ser:
 
