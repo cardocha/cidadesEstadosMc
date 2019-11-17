@@ -37,7 +37,7 @@ a. NO CSV, a primeira linha (cabeçalho) deve conter o nome de cada campo e
 *somente o ID da cidade.*
 
 *e. Usar um cache no item (d), para que quando o nome de uma cidade for
-*enviado mais de uma vez, evite a chamada do serviço externo.*
+enviado mais de uma vez, evite a chamada do serviço externo.*
 
 *f. No endpoint do CSV deverá retornar um objeto do tipo  java.io.OutputStream*
 *como saída da transformação.*
